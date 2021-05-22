@@ -4,15 +4,12 @@
       <h2 class="my-3 d-flex justify-content-center">Movies to watch 🍿</h2>
 
       <div data-controller="refresh-list">
-        <%= form_with url: movies_path, method: :get, html: { class: 'mb-4', data: { refresh_list_target: 'form' } } do |f| %>
+        <%= form_with url: movies_path, method: :get, html: { class: 'mb-4' } do |f| %>
           <%= f.text_field :query,
                            class: "form-control",
                            placeholder: 'Type a movie title',
-                           value: params[:query],
-                           data: {
-                            refresh_list_target: 'searchInput',
-                            action: "keyup->refresh-list#update"
-                          } %>
+                           value: params[:query]
+                           %>
         <% end %>
 
         <%= render 'list', movies: @movies %>

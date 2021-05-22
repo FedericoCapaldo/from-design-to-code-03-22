@@ -1,4 +1,4 @@
-<div data-refresh-list-target="list">
+<div>
   <% if params[:query].blank? %>
     <h1 class="h3"><%= pluralize movies.count, 'movie' %> available</h1>
   <% else %>
@@ -8,7 +8,7 @@
     <% movies.each do |movie| %>
       <div class="movie-card">
         <%= image_tag movie.image_url %>
-        <%= render 'movie_infos', movie: movie %>
+        <%= render 'movie_infos.html', movie: movie %>
       </div>
     <% end %>
   </div>
