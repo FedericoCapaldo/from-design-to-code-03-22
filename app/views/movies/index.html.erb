@@ -3,7 +3,7 @@
     <div class="col">
       <h2 class="my-3 d-flex justify-content-center">Movies to watch 🍿</h2>
 
-      <div data-controller="refresh-list">
+      <div>
         <%= form_with url: movies_path, method: :get, html: { class: 'mb-4' } do |f| %>
           <%= f.text_field :query,
                            class: "form-control",
