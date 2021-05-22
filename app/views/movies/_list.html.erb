@@ -7,7 +7,6 @@
   <div class="movies">
     <% movies.each do |movie| %>
       <div class="movie-card">
-        <%= image_tag movie.image_url %>
         <%= render 'movie_infos.html', movie: movie %>
       </div>
     <% end %>
