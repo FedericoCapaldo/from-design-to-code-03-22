@@ -1,13 +1,14 @@
-<%= image_tag movie.image_url %>
+<div class="movie-card">
+  <%= image_tag movie.image_url %>
 
-<div class="movie-infos">
-  <h2><%= movie.title %> <small>(<%= movie.year %>)</small></h2>
-  <i class="fas fa-pen fa-xs ml-2"></i>
+  <div class="movie-infos">
+    <h2><%= movie.title %> <small>(<%= movie.year %>)</small></h2>
+    <i class="fas fa-pen fa-xs ml-2"></i>
+  </div>
+
+  <%= simple_form_for movie, html: { class: 'd-none' } do |f| -%>
+    <%= f.input :title %>
+    <%= f.input :year %>
+    <%= f.submit "Update movie", class: "btn btn-sm btn-primary mt-2" %>
+  <% end %>
 </div>
-
-<!-- Insert the movie form here -->
-<%= simple_form_for movie, html: { class: 'd-none' } do |f| -%>
-  <%= f.input :title %>
-  <%= f.input :year %>
-  <%= f.submit "Update movie", class: "btn btn-sm btn-primary mt-2" %>
-<% end -%>

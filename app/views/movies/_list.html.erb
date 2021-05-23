@@ -6,9 +6,7 @@
   <% end %>
   <div class="movies">
     <% movies.each do |movie| %>
-      <div class="movie-card">
-        <%= render 'movie_infos.html', movie: movie %>
-      </div>
+      <%= render 'movie_infos.html', movie: movie %>
     <% end %>
   </div>
 </div>
