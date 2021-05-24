@@ -1,10 +1,12 @@
-<div class="form-check mt-4">
-  <input type="checkbox" class="form-check-input">
-  <label>Check all</label>
-</div>
-
-<div class="border-top border-bottom py-3">
-  <% @movies.each do |movie| %>
-    <%= render 'movie_item', movie: movie %>
+<div>
+  <% if params[:query].blank? %>
+    <h1 class="h3"><%= pluralize movies.count, 'movie' %> available</h1>
+  <% else %>
+    <h1 class="h3"><%= pluralize movies.count, 'result' %> for <code><%= params[:query] %></code></h1>
   <% end %>
+  <div class="movies">
+    <% movies.each do |movie| %>
+      <%= render 'movie_infos.html', movie: movie %>
+    <% end %>
+  </div>
 </div>

@@ -1,10 +1,24 @@
-require "open-uri"
-require "yaml"
+require 'open-uri'
 
-file = "https://gist.githubusercontent.com/juliends/461638c32c56b8ae117a2f2b8839b0d3/raw/3df2086cf31d0d020eb8fcf0d239fc121fff1dc3/imdb.yml"
-sample = YAML.safe_load(open(file).read)
+movies = [
+  "batman",
+  "superman",
+  "spiderman",
+  "wonder woman",
+  "thor",
+  "black panther",
+  "avengers"
+]
 
-puts 'Creating movies...'
-sample["movies"].each do |movie|
-  Movie.create! movie.slice("title", "year", "synopsis")
+movies.each do |movie|
+  omdb_endpoint = "http://www.omdbapi.com/?s=#{movie}&apikey=a881ace5"
+
+  serialized_data = URI.open(omdb_endpoint).read
+  results = JSON.parse(serialized_data)['Search']
+
+  results.each do |result|
+    next if result['Type'] != 'movie' || result['Poster'] == "N/A"
+
+    Movie.create(title: result['Title'], year: result['Year'].to_i, image_url: result['Poster'])
+  end
 end
