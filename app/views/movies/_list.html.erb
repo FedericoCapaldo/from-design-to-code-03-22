@@ -1,9 +1,11 @@
 <div>
-  <% if params[:query].blank? %>
-    <h1 class="h3"><%= pluralize movies.count, 'movie' %> available</h1>
-  <% else %>
-    <h1 class="h3"><%= pluralize movies.count, 'result' %> for <code><%= params[:query] %></code></h1>
-  <% end %>
+  <h2 class="h3">
+    <% if params[:query].blank? %>
+      <%= pluralize movies.count, 'movie' %> available
+    <% else %>
+      <%= pluralize movies.count, 'result' %> for <code><%= params[:query] %></code>
+    <% end %>
+  </h2>
   <div class="movies">
     <% movies.each do |movie| %>
       <%= render 'movie_infos.html', movie: movie %>
