@@ -2,7 +2,9 @@
   <%= image_tag movie.image_url %>
 
   <div class="movie-infos">
-    <h2 title="<%= movie.title %> (<%= movie.year %>)"><%= movie.title %> <small>(<%= movie.year %>)</small></h2>
+    <h2 title="<%= movie.title %> (<%= movie.year %>)">
+      <%= movie.title %><small>(<%= movie.year %>)</small>
+    </h2>
     <i class="fas fa-pen fa-xs ml-2"></i>
   </div>
 
