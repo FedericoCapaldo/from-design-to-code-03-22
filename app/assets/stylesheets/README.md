@@ -9,8 +9,7 @@ rails new APP_NAME
 Ensure you have bootstrap and it's dependencies
 
 ```bash
-yarn add bootstrap
-yarn add jquery popper.js
+yarn add bootstrap @popperjs/core
 ```
 
 Ensure you have the following gems in your Rails `Gemfile`
@@ -29,6 +28,8 @@ bundle install
 rails generate simple_form:install --bootstrap
 ```
 
+Replace **all the content** of your `config/initializers/simple_form_bootstrap.rb` file with [this](https://github.com/heartcombo/simple_form-bootstrap/blob/main/config/initializers/simple_form_bootstrap.rb).
+
 Then replace Rails' stylesheets by Le Wagon's stylesheets:
 
 ```
@@ -39,41 +40,10 @@ unzip stylesheets.zip -d app/assets && rm stylesheets.zip && mv app/assets/rails
 
 **On Ubuntu/Windows**: if the `unzip` command returns an error, please install it first by running `sudo apt install unzip`.
 
-And the viewport in the layout
-
-```html
-<!-- app/views/layouts/application.html.erb -->
-<head>
-  <!-- Add these line for detecting device width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-  <!-- [...] -->
-</head>
-```
 
 ## Bootstrap JS
 
-Make sure you change the webpack config with the following code to include jQuery & Popper in webpack:
-
-```js
-// config/webpack/environment.js
-const { environment } = require('@rails/webpacker')
-
-// Bootstrap 4 has a dependency over jQuery & Popper.js:
-const webpack = require('webpack')
-environment.plugins.prepend('Provide',
-  new webpack.ProvidePlugin({
-    $: 'jquery',
-    jQuery: 'jquery',
-    Popper: ['popper.js', 'default']
-  })
-)
-
-module.exports = environment
-```
-
-Finally import bootstrap:
+Import bootstrap:
 
 ```js
 // app/javascript/packs/application.js
