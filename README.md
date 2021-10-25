@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Boilerplate for the [From Design to Code lecture](https://github.com/lewagon/karr/blob/master/lectures/rails/from-design-to-code.md).
