@@ -23,13 +23,13 @@ default: &default
 
 development:
   <<: *default
-  database: imdb_clone_development
+  database: from_design_to_code_boilerplate_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: imdb_clone
+  #username: from_design_to_code_boilerplate
 
   # The password associated with the postgres role (username).
   #password:
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: imdb_clone_test
+  database: from_design_to_code_boilerplate_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: imdb_clone_production
-  username: imdb_clone
-  password: <%= ENV['IMDB_CLONE_DATABASE_PASSWORD'] %>
+  database: from_design_to_code_boilerplate_production
+  username: from_design_to_code_boilerplate
+  password: <%= ENV['FROM_DESIGN_TO_CODE_BOILERPLATE_DATABASE_PASSWORD'] %>
